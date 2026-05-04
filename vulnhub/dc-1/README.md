@@ -16,6 +16,7 @@ Rather than relying on blind exploitation, this case study emphasizes:
 *   **Source:** [VulnHub](https://www.vulnhub.com/entry/dc-1,292/)
 *   **Difficulty:** Beginner
 *   **Focus:** Linux Fundamentals, Drupal CMS, Privilege Escalation.
+
 ![01](screenshots/image3.png)
 ---
 
@@ -26,6 +27,16 @@ Rather than relying on blind exploitation, this case study emphasizes:
 *   **Web Discovery:** Identified the site is running on **Drupal CMS**.
 *   **Enumeration:** Discovered `robots.txt` and sensitive files like `install.php` & `update.php`.
 
+!(screenshots/image4.png)
+
+!(screenshots/image5.png)
+
+!(screenshots/image6.png)
+
+!(screenshots/image7.png)
+
+!(screenshots/image8.png)
+
 ### Phase 3: Initial Access
 *   **Vulnerability:** Searched `searchsploit` for Drupal and identified **Drupalgeddon** exploit.
 *   **Exploitation:** Used Metasploit (`exploit/unix/webapp/drupal_drupalgeddon2`) to gain a **Meterpreter** session.
@@ -33,16 +44,37 @@ Rather than relying on blind exploitation, this case study emphasizes:
     ```bash
     python -c 'import pty; pty.spawn("/bin/bash")'
     ```
+!(screenshots/image9.png)
+
+!(screenshots/image10.png)
+
+!(screenshots/image11.png)
+
+!(screenshots/image12.png)
+
+!(screenshots/image13.png)
 
 ### Phase 4 & 5: Flag 1 (The Web Clue)
 *   Found `flag1.txt` in the `/var/www` directory. 
 *   **Hint:** The flag suggested looking into the site's **Configuration Files**.
+
+!(screenshots/image18.png)
 
 ### Phase 6: Drupal Configuration (Flag 2)
 *   Navigated to `sites/default/settings.php`.
 *   **Findings:**
     *   Found **Flag 2**.
     *   Extracted **Database Credentials** (DB User & Password).
+
+!(screenshots/image21.png)
+
+!(screenshots/image22.png)
+
+!(screenshots/image23.png)
+
+!(screenshots/image24.png)
+
+!(screenshots/image25.png)
 
 ### Phase 7: Database Enumeration (Flag 3)
 *   Accessed MySQL database using discovered credentials.
@@ -51,6 +83,18 @@ Rather than relying on blind exploitation, this case study emphasizes:
     2. `select * from users;` (Found admin hashes).
     3. `select * from node;` -> Found **Flag 3** title and body.
 *   **Hint:** Flag 3 pointed towards "special permissions."
+
+!(screenshots/image27.png)
+
+!(screenshots/image28.png)
+
+!(screenshots/image29.png)
+
+!(screenshots/image30.png)
+
+!(screenshots/image31.png)
+
+!(screenshots/image32.png)
 
 ### Phase 8: Privilege Escalation (Flag 4)
 *   **Enumeration:** Checked for SUID binaries:
@@ -63,10 +107,18 @@ Rather than relying on blind exploitation, this case study emphasizes:
     find . -exec /bin/sh -p \; -quit
     ```
 
+!(screenshots/image34.png)
+
+!(screenshots/image35.png)
+
+!(screenshots/image36.png)
+
+!(screenshots/image37.png)
 ### Phase 10: Root Access (Final Flag)
 *   Successfully reached `#` (Root) shell.
 *   **Final Flag:** Located at `/root/thefinalflag.txt`.
 
+!(screenshots/image40.png)
 ---
 
 ##  Linux Filesystem Mental Map
