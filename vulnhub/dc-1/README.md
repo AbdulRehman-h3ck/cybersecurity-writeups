@@ -16,7 +16,7 @@ Rather than relying on blind exploitation, this case study emphasizes:
 *   **Source:** [VulnHub](https://www.vulnhub.com/entry/dc-1,292/)
 *   **Difficulty:** Beginner
 *   **Focus:** Linux Fundamentals, Drupal CMS, Privilege Escalation.
-
+![01](screenshots/image3.png)
 ---
 
 ##  Phase-by-Phase Breakdown
