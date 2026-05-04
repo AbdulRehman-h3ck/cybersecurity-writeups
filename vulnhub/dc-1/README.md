@@ -27,7 +27,7 @@ Rather than relying on blind exploitation, this case study emphasizes:
 *   **Web Discovery:** Identified the site is running on **Drupal CMS**.
 *   **Enumeration:** Discovered `robots.txt` and sensitive files like `install.php` & `update.php`.
 
-!(screenshots/image4.png)
+![](screenshots/image4.png)
 
 !(screenshots/image5.png)
 
